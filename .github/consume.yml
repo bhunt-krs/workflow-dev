@@ -1,0 +1,11 @@
+name: Call Reusable Workflows
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  job-name-not-important:
+    uses: bhunt-krs/workflow-dev/reuse.yml@main
+    with:
+      comment: "this is my comment"

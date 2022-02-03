@@ -1,0 +1,25 @@
+name: Reusable Workflow - Post Github Comment
+
+on:
+  workflow_call:
+    inputs:
+      comment:
+        required: true
+        type: string
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+      - name: Add comment to github
+        env:
+          URL: ${{ github.event.pull_request.comments_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMMENT: ${{ inputs.comment }}
+        run: |
+          curl \
+            -H "Content-Type: application/json" \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -d $COMMENT \
+            -X POST \
+            $URL
