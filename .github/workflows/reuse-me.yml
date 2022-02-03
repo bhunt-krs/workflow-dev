@@ -18,9 +18,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           COMMENT: ${{ inputs.comment }}
         run: |
+        echo "token: $GITHUB_TOKEN url: $URL comment: $COMMENT"
           curl \
             -H "Content-Type: application/json" \
             -H "Authorization: token $GITHUB_TOKEN" \
-            -d $COMMENT \
+            -d "$COMMENT" \
             -X POST \
             $URL
