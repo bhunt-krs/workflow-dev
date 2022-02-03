@@ -9,8 +9,9 @@ on:
 
 
 jobs:
-  build:
+  job1:
     runs-on: ubuntu-latest
+    steps:
       - name: Add comment to github
         env:
           URL: ${{ github.event.pull_request.comments_url }}
