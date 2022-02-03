@@ -6,6 +6,6 @@ on:
 jobs:
 
   job-name-not-important:
-    uses: bhunt-krs/workflow-dev/reuse.yml@main
+    uses: bhunt-krs/workflow-dev/.github/workflows/reuse.yml@main
     with:
       comment: "this is my comment"
