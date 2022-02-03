@@ -2,7 +2,13 @@ name: Reusable Workflow - Post Github Comment
 
 on:
   workflow_call:
+    secrets:
+      GITHUB_TOKEN:
+      
     inputs:
+      url:
+        required: true
+        type: string
       comment:
         required: true
         type: string
@@ -14,7 +20,7 @@ jobs:
     steps:
       - name: Add comment to github
         env:
-          URL: ${{ github.event.pull_request.comments_url }}
+          URL: ${{ inputs.url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           COMMENT: ${{ inputs.comment }}
         run: |
