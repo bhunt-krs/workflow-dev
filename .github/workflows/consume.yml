@@ -9,5 +9,5 @@ jobs:
     uses: bhunt-krs/workflow-dev/.github/workflows/reuse-me.yml@test1
     with:
       comment: "this is my comment"
-      url: ${{ github.event.pull_request.comments_url }}
+      url: ${{ github.repository.comments_url }}
     
