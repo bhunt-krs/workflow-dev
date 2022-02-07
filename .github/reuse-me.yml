@@ -1,0 +1,27 @@
+name: Reusable Workflow - Post Github Comment
+
+on:
+  workflow_call:
+    secrets:
+      color:
+        required: true
+    inputs:
+      environment:
+        required: true
+        type: string
+
+
+jobs:
+  job1:
+    runs-on: self-hosted
+    environment: ${{ inputs.environment }}
+    steps:
+      - name: Add comment to github
+        env:
+          ENV: ${{ inputs.environment }}
+          COLOR: ${{ secrets.COLOR }}
+        run: |
+          echo "environment: $ENV"
+          [ $COLOR -eq "green" ] && echo "color is GREEN"
+          [ $COLOR -eq "red" ] && echo "color is RED"
+          [ $COLOR -eq "yellow" ] && echo "color is YELLOW"
