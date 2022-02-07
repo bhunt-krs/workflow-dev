@@ -10,17 +10,17 @@ on:
         required: true
         type: string
     outputs:
-      description: "a sample result"
-      value: ${{ jobs.job1.outputs.job-output }}
+      result:
+        description: "a sample result"
+        value: ${{ jobs.job1.outputs.job-output }}
 
 
 jobs:
   job1:
     runs-on: self-hosted
     environment: ${{ inputs.environment }}
-    # Map the job outputs to step outputs
     outputs:
-      job-output: ${{ steps.test-code.outputs.result }}
+      job-output: ${{ steps.test-code.outputs.run-result }}
     steps:
       - id: test-code
         env:
@@ -31,4 +31,4 @@ jobs:
           [ $COLOR = "red" ] && echo "color is RED"
           [ $COLOR = "yellow" ] && echo "color is YELLOW"
           echo "environment: $ENV"
-          echo "::set-output name=result::Success!"
+          echo "::set-output name=run-result::Success!"
