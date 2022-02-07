@@ -12,4 +12,10 @@ jobs:
       environment: "staging"
     secrets:
       color: ${{ secrets.COLOR }}
-    
+
+  another-job:  
+    #do something with the output -- called with 'needs' because the job needs to finish before we proceed
+    needs: job-name-not-important
+    steps:
+      -run: echo ${{ needs.job-name-not-important.outputs.result }}
+

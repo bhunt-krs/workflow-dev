@@ -15,6 +15,7 @@ jobs:
   job1:
     runs-on: self-hosted
     environment: ${{ inputs.environment }}
+    outputs:
     steps:
       - name: Add comment to github
         env:
@@ -25,3 +26,4 @@ jobs:
           [ $COLOR = "red" ] && echo "color is RED"
           [ $COLOR = "yellow" ] && echo "color is YELLOW"
           echo "environment: $ENV"
+          echo "::set-output name=result::Success!"
