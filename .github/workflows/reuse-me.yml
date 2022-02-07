@@ -9,15 +9,20 @@ on:
       environment:
         required: true
         type: string
+    outputs:
+      description: "a sample result"
+      value: ${{ jobs.job1.outputs.job-output }}
 
 
 jobs:
   job1:
     runs-on: self-hosted
     environment: ${{ inputs.environment }}
+    # Map the job outputs to step outputs
     outputs:
+      job-output: ${{ steps.test-code.outputs.result }}
     steps:
-      - name: Add comment to github
+      - id: test-code
         env:
           ENV: ${{ inputs.environment }}
           COLOR: ${{ secrets.COLOR }}
