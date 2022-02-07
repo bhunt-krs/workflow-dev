@@ -21,7 +21,7 @@ jobs:
           ENV: ${{ inputs.environment }}
           COLOR: ${{ secrets.COLOR }}
         run: |
-          echo "environment: $ENV"
           [ $COLOR = "green" ] && echo "color is GREEN"
           [ $COLOR = "red" ] && echo "color is RED"
           [ $COLOR = "yellow" ] && echo "color is YELLOW"
+          echo "environment: $ENV"
