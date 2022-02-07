@@ -22,6 +22,6 @@ jobs:
           COLOR: ${{ secrets.COLOR }}
         run: |
           echo "environment: $ENV"
-          [ $COLOR -eq "green" ] && echo "color is GREEN"
-          [ $COLOR -eq "red" ] && echo "color is RED"
-          [ $COLOR -eq "yellow" ] && echo "color is YELLOW"
+          [ $COLOR = "green" ] && echo "color is GREEN"
+          [ $COLOR = "red" ] && echo "color is RED"
+          [ $COLOR = "yellow" ] && echo "color is YELLOW"
