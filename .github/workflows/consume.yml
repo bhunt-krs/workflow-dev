@@ -18,5 +18,5 @@ jobs:
     runs-on: self-hosted
     needs: job-name-not-important
     steps:
-      -run: echo ${{ needs.job-name-not-important.outputs.result }}
+      - run: echo ${{ needs.job-name-not-important.outputs.result }}
 
