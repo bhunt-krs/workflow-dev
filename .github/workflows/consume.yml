@@ -9,7 +9,7 @@ jobs:
     #uses: bhunt-krs/workflow-dev/.github/workflows/reuse-me.yml@test1
     uses: ./.github/workflows/reuse-me.yml
     with:
-      environment: "prod"
+      environment: "dev"
     secrets:
       color: ${{ secrets.COLOR }}
     
