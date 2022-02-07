@@ -13,8 +13,9 @@ jobs:
     secrets:
       color: ${{ secrets.COLOR }}
 
-  another-job:  
+  another-job:
     #do something with the output -- called with 'needs' because the job needs to finish before we proceed
+    runs-on: self-hosted
     needs: job-name-not-important
     steps:
       -run: echo ${{ needs.job-name-not-important.outputs.result }}
