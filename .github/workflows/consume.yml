@@ -20,3 +20,8 @@ jobs:
     steps:
       - run: echo ${{ needs.job-name-not-important.outputs.result }}
 
+  pylint:
+    uses: ./.github/workflows/pylint.yml
+    with:
+      score: 9
+
