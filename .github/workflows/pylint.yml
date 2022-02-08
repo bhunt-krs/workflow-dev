@@ -3,10 +3,10 @@ name: Pylint
 on: 
   workflow_call:
     inputs:
-    score:
-      required: false
-      type: string
-      default: 10
+      score:
+        required: false
+        type: string
+        default: "10"
 
 jobs:
   build:
