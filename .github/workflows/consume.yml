@@ -22,6 +22,5 @@ jobs:
 
   pylint:
     uses: ./.github/workflows/pylint.yml
-    with:
-      score: "9"
+
 
