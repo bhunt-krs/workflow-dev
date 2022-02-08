@@ -23,5 +23,6 @@ jobs:
   pylint:
     uses: ./.github/workflows/pylint.yml
     with:
-      python-version: "3.10"
+      python-version: "3.9"
+      score: "9"
 
