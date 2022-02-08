@@ -1,2 +1,15 @@
-""" This program prints Hello, world! This is a very long line. Hello, world! This is a very long line. Hello, world! This is a very long line. Hello, world! This is a very long  line. """
-print('Hello, world!')
+""" This program prints Hello, world! """
+i = 1
+while i < 6:
+    print(i)
+    i += 1
+i = 1
+while i < 6:
+    print(i)
+    i += 1
+i = 1
+while i < 6:
+    print(i)
+    i += 1
+
+print('Hello, world!') 
