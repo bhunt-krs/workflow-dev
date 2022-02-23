@@ -1,4 +1,4 @@
-name: cdk-diff
+name: cdk-diff reusable workflow
 
 on: 
   workflow_call:
@@ -64,7 +64,7 @@ jobs:
           URL: ${{ github.event.pull_request.comments_url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo -e "#CDK DIFF\n\`\`\`\n$(cat cdk-diff.log)\n\`\`\`" > cdk-diff.log
+          echo -e "# CDK DIFF\n\`\`\`\n$(cat cdk-diff.log)\n\`\`\`" > cdk-diff.log
           jq --raw-input --slurp '{body: .}' cdk-diff.log > cdk-diff.json
           curl \
             -H "Content-Type: application/json" \
