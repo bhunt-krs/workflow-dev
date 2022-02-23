@@ -2,25 +2,33 @@ name: Reusable Workflow - Post Github Comment
 
 on:
   workflow_call:
+    secrets:
+      color:
+        required: true
     inputs:
-      comment:
+      environment:
         required: true
         type: string
+    outputs:
+      result:
+        description: "a sample result"
+        value: ${{ jobs.job1.outputs.job-output }}
 
 
 jobs:
   job1:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
+    environment: ${{ inputs.environment }}
+    outputs:
+      job-output: ${{ steps.test-code.outputs.run-result }}
     steps:
-      - name: Add comment to github
+      - id: test-code
         env:
-          URL: ${{ github.event.pull_request.comments_url }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          COMMENT: ${{ inputs.comment }}
+          ENV: ${{ inputs.environment }}
+          COLOR: ${{ secrets.COLOR }}
         run: |
-          curl \
-            -H "Content-Type: application/json" \
-            -H "Authorization: token $GITHUB_TOKEN" \
-            -d $COMMENT \
-            -X POST \
-            $URL
+          [ $COLOR = "green" ] && echo "color is GREEN"
+          [ $COLOR = "red" ] && echo "color is RED"
+          [ $COLOR = "yellow" ] && echo "color is YELLOW"
+          echo "environment: $ENV"
+          echo "::set-output name=run-result::Success!"
